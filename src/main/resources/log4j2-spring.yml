@@ -1,0 +1,45 @@
+Configuration:
+  shutdownHook: disable
+  status: warn
+  monitorInterval: 30
+  properties:
+    property:
+    - name: path
+      value: ./sqlbenchmark-logs
+    - name: filename
+      value: sqlbenchmark
+    - name: log.pattern
+      value: "[%d] [%-5level] [%thread] [%pid] [%c:%M:%m]%n"
+    - name: rollingFilePattern
+      value: ${path}/${filename}-%d{yyyy-MM-dd}.%i.log.gz
+  Appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        Pattern: ${log.pattern}
+    RollingFile:
+      name: myRollingFile
+      fileName: ${path}/${filename}.log
+      filePattern : ${rollingFilePattern}
+      PatternLayout:
+        Pattern: ${log.pattern}
+      Policies:
+        TimeBasedTriggeringPolicy :
+          interval : "1"
+        SizeBasedTriggeringPolicy:
+          size: "800MB"
+      DefaultRolloverStrategy:
+        max : 80
+
+  Loggers:
+    AsyncLogger:
+    - name : com
+      level : debug
+      additivity : false
+      appender-ref :
+      - ref : myRollingFile
+    Root:
+      level: warn
+      additivity : false
+      appender-ref :
+        ref: myRollingFile
