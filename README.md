@@ -1,4 +1,4 @@
-develop based on spring boot and JDK21
+develop based on spring boot and JDK21, currently support mysql,达梦(DaMeng),金仓(KingBase),神通
 
 how to run 
 
@@ -34,7 +34,7 @@ every database has three csv files,which means insert‘s metrics data,update's 
 and query's metrics data,and one summary file,which is the summary of all the csv files
 "sqlbenchmark.log" file includes the log of the database connection pool's metrics
 ### 中文介绍
- 基于springboot和JDK21开发的一个sql性能测试工具
+ 基于springboot和JDK21开发的一个sql性能测试工具,目前支持mysql,达梦(DaMeng),金仓(KingBase),神通
 
  运行说明
 
