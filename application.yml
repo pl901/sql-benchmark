@@ -1,6 +1,6 @@
 dataSize: 1 #填数字 单位KB 例如1 表示单条数据的总大小为1kb
 dbs: dm # 要压测的数据列表 逗号分割 例 mysql,dm,kingbase,shentong
-executeSize : 10000
+executeSize : 200000 # 压测数据条数
 
 mysql:
    name:
