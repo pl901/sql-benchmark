@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 public class CommonUtil {
+    @Value("${threads:300}")
+    int threadSize;
     @Value("${dataSize}")
     int dataSize;
     /**
@@ -74,5 +76,8 @@ public class CommonUtil {
         map.put("field9", stringList.get(2));
 
         return map;
+    }
+    public int getThreadSize() {
+        return threadSize;
     }
 }

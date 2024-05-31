@@ -14,17 +14,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static com.benchmark.database.BenchCommon.executor;
 import static com.benchmark.util.DataUtil.getRandomNumber;
 
 @Service
 @Slf4j
 public class MySqlBench {
     String tableSql = "CREATE TABLE benchmark.benchmark_table (\n" + "  id bigint NOT NULL,\n" + "  field1 bigint DEFAULT NULL,\n" + "  field2 bigint DEFAULT NULL,\n" + "  field3 bigint DEFAULT NULL,\n" + "  field4 bigint DEFAULT NULL,\n" + "  field5 varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL,\n" + "  field6 varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL,\n" + "  field7 varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,\n" + "  field8 varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,\n" + "  field9 varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,\n" + "  PRIMARY KEY (id)\n" + ")";
-    static ExecutorService executor = Executors.newFixedThreadPool(300);
 
     //存放统计数据的文件名
     static String fileName = "MySqlBench";

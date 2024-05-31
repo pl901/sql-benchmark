@@ -29,7 +29,7 @@ public class MySqlPool   {
     private CommonUtil commonUtil;
     private void run()  {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mysql://"+ip+":"+port);
+        config.setJdbcUrl("jdbc:mysql://"+ip+":"+port+"?useSSL=false");
         config.setUsername(userName);
         config.setPassword(password);
         config.setMaximumPoolSize(500);

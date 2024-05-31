@@ -16,17 +16,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import static com.benchmark.database.BenchCommon.executor;
 import static com.benchmark.util.DataUtil.getRandomNumber;
 
 @Service
 @Slf4j
 public class KingBaseBench {
     String tableSql = "CREATE TABLE benchmark.benchmark_table (  id bigint NOT NULL, field1 bigint DEFAULT NULL, field2 bigint DEFAULT NULL,  field3 bigint DEFAULT NULL,  field4 bigint DEFAULT NULL,  field5 varchar(250)  DEFAULT NULL, field6 varchar(250)  DEFAULT NULL,  field7 varchar(1000) DEFAULT NULL,  field8 varchar(1000) DEFAULT NULL,  field9 varchar(1000)   DEFAULT NULL,  PRIMARY KEY (id))";
-    static ExecutorService executor = Executors.newFixedThreadPool(300);
 
     //存放统计数据的文件名
     static String fileName = "KingBaseBench";

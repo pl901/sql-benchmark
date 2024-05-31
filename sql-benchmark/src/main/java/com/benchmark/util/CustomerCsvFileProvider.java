@@ -1,6 +1,5 @@
 package com.benchmark.util;
 
-import com.codahale.metrics.CsvFileProvider;
 
 import java.io.File;
 

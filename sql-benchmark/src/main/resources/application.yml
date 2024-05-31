@@ -1,17 +1,17 @@
 dataSize: 1 #填数字 单位KB 例如1 表示单条数据的总大小为1kb
-dbs: mysql,kingbase # 要压测的数据列表 逗号分割 例 mysql,dm,kingbase,shentong
-executeSize : 10000
-
+dbs: dm # 要压测的数据列表 逗号分割 例 mysql,dm,kingbase,shentong
+executeSize : 100000 #执行总请求数的大小
+threads : 300 #同时对数据库请求的线程数
 mysql:
    name:
    password:
    ip :
    port:
 dameng:
-   name:
-   password:
-   ip :
-   port:
+   name: SYSDBA
+   password: SYSDBA001
+   ip : 192.168.85.23
+   port: 25236
 kingBase:
    name:
    password:
