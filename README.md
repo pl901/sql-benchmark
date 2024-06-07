@@ -8,17 +8,17 @@ root
 │   jre_linux_aarch64
 │   jre_linux_x64    
 │   jre_win_x64
-│   application.yml
+│   config.toml
 │   run.bat
 │   run.sh
 |   sql-benchmark-1.0-SNAPSHOT.jar
 ```
-1.modify the application.yml,set the right database config
-    application.yml has some configs,you can modify it
+1.modify the config.toml,set the right database config
+config.toml has some configs,you can modify it
 ```
 dataSize: 1 #the size of each data ,default is 1KB
-dbs: mysql,dm,kingbase,shentong # lists the database which you want to test, example: mysql,dm,kingbase,shentong
-executeSize : 100000 # the request size which you want to execute,default is 100000
+dbs: mysql,dm,kingbase,shentong #A list of data sources for load testing, e.g.: ["mysql","dm","kingbase","shentong"]"
+executeSize : 500000 # the request size which you want to execute,default is 500000
 threads : 300 # the threads which you want to use,default is 300
 mysql:
    name:
@@ -49,13 +49,13 @@ and query's metrics data,and one summary file,which is the summary of all the cs
 
  运行说明
 
- 1.修改application.yml，设置正确的数据库配置,
-    application.yml中有一些配置，可以修改
+ 1.修改config.toml，设置正确的数据库配置,
+ config.toml中有一些配置，可以修改
 
  ```
  dataSize: 1 #每个数据的大小，默认是1KB
- dbs: mysql,dm,kingbase,shentong # 测试的数据库列表，示例：mysql,dm,kingbase,shentong
- executeSize : 100000 # 每次请求的大小，默认是100000
+ dbs: mysql,dm,kingbase,shentong # 要压测的数据列表  例 ["mysql","dm","kingbase","shentong"]
+ executeSize : 500000 # 每次请求的大小，默认是500000
  threads : 300 # 测试的线程数，默认是300
  mysql:
    name:
