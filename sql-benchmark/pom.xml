@@ -6,7 +6,7 @@
 
     <groupId>com.benchmark</groupId>
     <artifactId>sql-benchmark</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.2.0</version>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
