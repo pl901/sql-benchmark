@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.benchmark.database.BenchCommon.executeSize;
 import static com.benchmark.database.BenchCommon.executor;
 import static com.benchmark.util.DataUtil.getRandomNumber;
 
@@ -29,12 +30,10 @@ public class KingBaseBench {
     //存放统计数据的文件名
     static String fileName = "KingBaseBench";
 
-    @Value("${dataSize}")
-    int dataSize;
+
     @Autowired
     private KingBasePool kingBasePool;
-    @Value("${executeSize}")
-    int executeSize;
+
 
     @Autowired
     private CommonUtil commonUtil;

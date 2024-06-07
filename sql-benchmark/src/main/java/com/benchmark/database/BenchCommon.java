@@ -1,5 +1,6 @@
 package com.benchmark.database;
 
+import com.benchmark.util.TomlUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,19 +15,18 @@ import java.util.concurrent.locks.ReentrantLock;
 @Component
 @Order(1)
 public class BenchCommon implements ApplicationRunner {
-    @Value("${threads:300}")
-    int threads;
+
 
     static ExecutorService executor=null;
 
-
+    static int executeSize=TomlUtil.getExecuteSize();
 
     private ExecutorService initExecutor() {
         Lock lock=new ReentrantLock();
         try {
             lock.lock();
             if(executor==null){
-                executor=Executors.newFixedThreadPool(threads);
+                executor=Executors.newFixedThreadPool(TomlUtil.getThreads());
 
             }
         } catch (Exception e) {

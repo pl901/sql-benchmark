@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.benchmark.database.BenchCommon.executeSize;
 import static com.benchmark.database.BenchCommon.executor;
 
 @Service
@@ -29,12 +30,10 @@ public class ShenTongBench {
     //存放统计数据的文件名
     static String fileName = "ShenTongBench";
 
-    @Value("${dataSize}")
-    int dataSize;
+
     @Autowired
     private ShenTongPool shenTongPool;
-    @Value("${executeSize}")
-    int executeSize;
+
 
     @Autowired
     private CommonUtil commonUtil;

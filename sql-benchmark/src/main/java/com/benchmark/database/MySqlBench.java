@@ -2,6 +2,7 @@ package com.benchmark.database;
 
 import com.benchmark.util.CommonUtil;
 import com.benchmark.util.CustomCsvReporter;
+import com.benchmark.util.TomlUtil;
 import com.codahale.metrics.*;
 import com.benchmark.dataBasePool.MySqlPool;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +31,8 @@ public class MySqlBench {
 
     @Autowired
     private MySqlPool mySqlPool;
-    @Value("${executeSize}")
-    int executeSize;
+
+    int executeSize= TomlUtil.getThreads();
     @Autowired
     private CommonUtil commonUtil;
 

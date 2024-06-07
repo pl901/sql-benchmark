@@ -5,6 +5,7 @@ import com.benchmark.database.DaMengBench;
 import com.benchmark.database.KingBaseBench;
 import com.benchmark.database.MySqlBench;
 import com.benchmark.database.ShenTongBench;
+import com.benchmark.util.TomlUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 @Order(100)
 public class MainRunner implements ApplicationRunner {
-    @Value("#{'${dbs}'.split(',')}")
-    List<String> dbs;
+    List<String> dbs= TomlUtil.getExecuteDb();
     @Autowired
     MySqlBench mySqlBench;
     @Autowired

@@ -2,13 +2,13 @@ package com.benchmark.database;
 
 import com.benchmark.util.CommonUtil;
 import com.benchmark.util.CustomCsvReporter;
+import com.benchmark.util.TomlUtil;
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import com.benchmark.dataBasePool.DaMengPool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static com.benchmark.database.BenchCommon.executeSize;
 import static com.benchmark.database.BenchCommon.executor;
 import static com.benchmark.util.DataUtil.getRandomNumber;
 
@@ -33,10 +34,8 @@ public class DaMengBench {
 
     @Autowired
     private DaMengPool daMengPool;
-    @Value("${executeSize}")
-    int executeSize;
-    @Value("${dameng.name:}")
-    String dbUserName;
+
+
     @Autowired
     private CommonUtil commonUtil;
 
@@ -313,7 +312,7 @@ public class DaMengBench {
                 connection.prepareStatement(sql).execute();
             } catch (SQLException e) {
             }
-            sql = "CREATE SCHEMA benchmark AUTHORIZATION \"" + dbUserName + "\"";
+            sql = "CREATE SCHEMA benchmark AUTHORIZATION \"" + TomlUtil.getDMConfig().get("name").toString() + "\"";
             connection.prepareStatement(sql).execute();
             connection.prepareStatement(tableSql).execute();
         } catch (Exception e) {

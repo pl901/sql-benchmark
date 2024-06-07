@@ -16,10 +16,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 public class CommonUtil {
-    @Value("${threads:300}")
-    int threadSize;
-    @Value("${dataSize}")
-    int dataSize;
+    int threadSize=TomlUtil.getThreads();
+    int dataSize=TomlUtil.getDataSize();
     /**
      * 配置指标监控
      * @param poolName
