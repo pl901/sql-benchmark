@@ -52,6 +52,10 @@ public class TomlUtil {
         return (int) tomlParseResult.getLong("benchmark.dataSize",()->1);
     }
 
+    public static Map<String,Object> getMongoDbConfig() {
+        TomlTable tomlTable=tomlParseResult.getTable("mongodb");
+        return tomlTable.toMap();
+    }
     public static void main(String[] args) {
         getMysqlConfig();
     }

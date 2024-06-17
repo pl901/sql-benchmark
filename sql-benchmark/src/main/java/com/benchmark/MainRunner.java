@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 @Order(100)
 public class MainRunner implements ApplicationRunner {
-    List<String> dbs= TomlUtil.getExecuteDb();
+    List<String> dbs = TomlUtil.getExecuteDb();
     @Autowired
     MySqlBench mySqlBench;
     @Autowired
@@ -34,7 +34,8 @@ public class MainRunner implements ApplicationRunner {
     ShenTongBench shenTongBench;
     @Autowired
     private MySqlPool mySqlPool;
-       ExecutorService ed=Executors.newVirtualThreadPerTaskExecutor();
+    ExecutorService ed = Executors.newVirtualThreadPerTaskExecutor();
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         try {
@@ -48,11 +49,11 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("插入压测开始");
                     mySqlBench.startInsert();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("插入压测结束");
 
                     System.out.println("更新压测开始");
-                    mySqlBench. startUpdateOne();
+                    mySqlBench.startUpdateOne();
                     System.out.println("更新压测结束");
 
                     System.out.println("查询压测开始 只查一条");
@@ -61,7 +62,7 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("查询压测开始 20一页");
                     mySqlBench.startQuery20();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("查询压测结束 20一页");
 
                     System.out.println("查询压测开始 50一页");
@@ -82,11 +83,11 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("插入压测开始");
                     daMengBench.startInsert();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("插入压测结束");
 
                     System.out.println("更新压测开始");
-                    daMengBench. startUpdateOne();
+                    daMengBench.startUpdateOne();
                     System.out.println("更新压测结束");
 
                     System.out.println("查询压测开始 只查一条");
@@ -95,7 +96,7 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("查询压测开始 20一页");
                     daMengBench.startQuery20();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("查询压测结束 20一页");
 
                     System.out.println("查询压测开始 50一页");
@@ -116,11 +117,11 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("插入压测开始");
                     kingBaseBench.startInsert();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("插入压测结束");
 
                     System.out.println("更新压测开始");
-                    kingBaseBench. startUpdateOne();
+                    kingBaseBench.startUpdateOne();
                     System.out.println("更新压测结束");
 
                     System.out.println("查询压测开始 只查一条");
@@ -129,7 +130,7 @@ public class MainRunner implements ApplicationRunner {
 
                     System.out.println("查询压测开始 20一页");
                     kingBaseBench.startQuery20();
-    //                mySqlPool.shutdown();
+                    //                mySqlPool.shutdown();
                     System.out.println("查询压测结束 20一页");
 
                     System.out.println("查询压测开始 50一页");
@@ -154,7 +155,7 @@ public class MainRunner implements ApplicationRunner {
                     System.out.println("插入压测结束");
 
                     System.out.println("更新压测开始");
-                    shenTongBench. startUpdateOne();
+                    shenTongBench.startUpdateOne();
                     System.out.println("更新压测结束");
 
                     System.out.println("查询压测开始 只查一条");
@@ -173,6 +174,9 @@ public class MainRunner implements ApplicationRunner {
                     System.out.println("清理数据");
                     shenTongBench.clean();
                     System.out.println("清理数据结束");
+
+                }
+                if (StringUtils.equals(db, "mongodb")) {
 
                 }
             }
